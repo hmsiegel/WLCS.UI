@@ -1,0 +1,108 @@
+<UserControl 
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:vm="clr-namespace:WLCS.ViewModels.Pages;assembly=WLCS"
+	mc:Ignorable="d" 
+	d:DesignWidth="800" 
+	d:DesignHeight="450"
+	x:Class="WLCS.Views.Pages.TitleView"
+	x:DataType="vm:TitleViewModel">
+
+    	<UserControl.Styles>
+		<Style Selector="Border.mainBorder">
+			<Setter Property="CornerRadius" Value="10" />
+			<Setter Property="BorderBrush" Value="#234d90" />
+			<Setter Property="BorderThickness" Value="2" />
+			<Setter Property="Padding" Value="5" />
+		</Style>
+
+		<Style Selector="Button.titleButton">
+			<Setter Property="Background" Value="Transparent" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Border BorderThickness="2"
+								ClipToBounds="True"
+								CornerRadius="6"
+								Cursor="Hand">
+							<Border.Background>
+								<ConicGradientBrush Center="50%, -20%" Angle="270">
+									<GradientStop Offset="0" Color="#6E99DD" />
+									<GradientStop Offset="0.5" Color="#306DCF" />
+									<GradientStop Offset="1" Color="#6E99DD" />
+								</ConicGradientBrush>
+							</Border.Background>
+							<Border.BorderBrush>
+								<ConicGradientBrush Center="110%, -20%" Angle="180">
+									<GradientStop Offset="0" Color="#306DCF" />
+									<GradientStop Offset="0.3" Color="#6E99DD" />
+									<GradientStop Offset="0.5" Color="#306DCF" />
+									<GradientStop Offset="0.6" Color="#6E99DD" />
+									<GradientStop Offset="1" Color="#306DCF" />
+								</ConicGradientBrush>
+							</Border.BorderBrush>
+							<Panel>
+								<ContentPresenter
+									Margin="5,0,5,0"
+									TextElement.FontSize="24"
+									TextElement.Foreground="Black"
+									TextElement.FontWeight="Bold"
+									HorizontalAlignment="Center"
+									TextElement.FontFamily="{StaticResource Nunito}"
+									Content="{TemplateBinding Content}" />
+							</Panel>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</UserControl.Styles>
+	<StackPanel Orientation="Vertical" VerticalAlignment="Center">
+		<Image Source="/Assets/USAWLogoShield.png" MaxHeight="128" MaxWidth="128" VerticalAlignment="Top"/>
+		<TextBlock Text="Weightlifting Competition Director"
+				   TextAlignment="Center"
+				   FontSize="36"
+				   FontWeight="Bold"
+				   FontFamily="{StaticResource Nunito}"
+				   Foreground="Black"
+				   Margin="0 0 0 20" />
+		<Viewbox MinWidth="1000" Margin="20 10" StretchDirection="DownOnly" ClipToBounds="False">
+			<Border Classes="mainBorder"
+					BoxShadow="0 20 60 -20 Black">
+				<Grid
+					ColumnDefinitions="*,*">
+					<StackPanel Orientation="Vertical"
+								Spacing="15"
+								Margin="10"
+								Grid.Column="0">
+						<Button Classes="titleButton"
+								Width="230"
+								Content="New Meet"
+								Command="{Binding NewMeetCommand}" />
+						<Button	Classes="titleButton"
+								Width="230"
+								Content="Edit Meet"
+								Command="{Binding EditMeetCommand}" />
+					</StackPanel>
+					<StackPanel Orientation="Vertical"
+								Spacing="15"
+								Margin="10"
+								Grid.Column="1">
+						<Button	Classes="titleButton"
+								Width="230"
+								Content="View Meet"
+								Command="{Binding ViewMeetCommand}" />
+						<Button	Classes="titleButton"
+								Width="230"
+								Content="View Athletes"
+								Command="{Binding ViewAthletesCommand}" />
+					</StackPanel>
+				</Grid>
+			</Border>
+		</Viewbox>
+
+	</StackPanel>
+	
+</UserControl>

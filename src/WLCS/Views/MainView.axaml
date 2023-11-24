@@ -1,0 +1,46 @@
+<UserControl 
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:vm="clr-namespace:WLCS.ViewModels"
+	xmlns:controls="clr-namespace:WLCS.Controls;assembly=WLCS"
+	mc:Ignorable="d" 
+	d:DesignWidth="800" 
+	d:DesignHeight="450"
+	x:Class="WLCS.Views.MainView"
+	x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+  	<UserControl.Background>
+		<RadialGradientBrush GradientOrigin="50%,50%" >
+			<RadialGradientBrush.GradientStops>
+				<GradientStop Color="#adc5eb" Offset="0" />
+				<GradientStop Color="#3068c5" Offset="1" />
+			</RadialGradientBrush.GradientStops>
+		</RadialGradientBrush>
+	</UserControl.Background>
+
+	<Panel>
+		<Panel.Background>
+			<VisualBrush Opacity="0.05" TileMode="Tile" SourceRect="0,0,300,300" DestinationRect="0,0,200,200">
+				<VisualBrush.Visual>
+					<controls:RandomNoiseTextureControl />
+				</VisualBrush.Visual>
+			</VisualBrush>
+		</Panel.Background>
+
+		<Panel Classes="mainContent">
+			<Panel.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform />
+					<TranslateTransform  />
+				</TransformGroup>
+			</Panel.RenderTransform>
+			<ContentControl Content="{Binding CurrentView, Mode=OneWay}" />
+		</Panel>
+
+	</Panel>
+</UserControl>

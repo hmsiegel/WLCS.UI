@@ -1,0 +1,155 @@
+<UserControl 
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:vm="clr-namespace:WLCS.ViewModels.Pages;assembly=WLCS"
+	mc:Ignorable="d" 
+	d:DesignWidth="800" 
+	d:DesignHeight="450"
+	x:DataType="vm:MeetInfoViewModel"
+	x:Class="WLCS.Views.Pages.MeetInfoView">
+  	<UserControl.Styles>
+		<Style Selector="Border.mainBorder">
+			<Setter Property="CornerRadius" Value="10" />
+			<Setter Property="BorderBrush" Value="#234d90" />
+			<Setter Property="BorderThickness" Value="2" />
+			<Setter Property="Padding" Value="5" />
+		</Style>
+
+		<Style Selector="HeaderedContentControl.inputTextBoxes">
+			<Setter Property="IsTabStop" Value="False" />
+			<Setter Property="Margin" Value="5" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="HeaderedContentControl">
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition SharedSizeGroup="L" Width="Auto"  />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Label Content="{TemplateBinding Header}"
+								   Margin="2 2 4 2" />
+							<ContentControl Content="{TemplateBinding Content}"
+											Grid.Column="1" />
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style Selector="TextBox.input">
+			<Setter Property="Width" Value="235" />
+			<Setter Property="Margin" Value="20 0 0 0" />
+		</Style>
+
+		<Style Selector="CalendarDatePicker">
+			<Setter Property="Width" Value="235" />
+			<Setter Property="Margin" Value="20 0 0 0" />
+		</Style>
+
+		<Style Selector="ComboBox">
+			<Setter Property="Width" Value="235" />
+			<Setter Property="Margin" Value="20 0 0 0" />
+		</Style>
+
+		<Style Selector="Button.titleButton">
+			<Setter Property="Background" Value="Transparent" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Border BorderThickness="2"
+								ClipToBounds="True"
+								CornerRadius="6"
+								Cursor="Hand">
+							<Border.Background>
+								<ConicGradientBrush Center="50%, -20%" Angle="270">
+									<GradientStop Offset="0" Color="#6E99DD" />
+									<GradientStop Offset="0.5" Color="#306DCF" />
+									<GradientStop Offset="1" Color="#6E99DD" />
+								</ConicGradientBrush>
+							</Border.Background>
+							<Border.BorderBrush>
+								<ConicGradientBrush Center="110%, -20%" Angle="180">
+									<GradientStop Offset="0" Color="#306DCF" />
+									<GradientStop Offset="0.3" Color="#6E99DD" />
+									<GradientStop Offset="0.5" Color="#306DCF" />
+									<GradientStop Offset="0.6" Color="#6E99DD" />
+									<GradientStop Offset="1" Color="#306DCF" />
+								</ConicGradientBrush>
+							</Border.BorderBrush>
+							<Panel>
+								<ContentPresenter
+									Margin="5,0,5,0"
+									TextElement.FontSize="24"
+									TextElement.Foreground="Black"
+									TextElement.FontWeight="Bold"
+									HorizontalAlignment="Center"
+									TextElement.FontFamily="{DynamicResource Nunito}"
+									Content="{TemplateBinding Content}" />
+							</Panel>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</UserControl.Styles>
+
+	<Viewbox MinWidth="1000" Margin="20 10" StretchDirection="DownOnly" ClipToBounds="False">
+		<Border Classes="mainBorder"
+				BoxShadow="0 20 60 -20 Black">
+			<Grid>
+				<StackPanel Orientation="Vertical"
+							Grid.IsSharedSizeScope="True"
+							Margin="5">
+					<HeaderedContentControl
+						Classes="inputTextBoxes"
+						Header="Meet Year:"
+						TabIndex="0">
+						<TextBox Classes="input"/>
+					</HeaderedContentControl>
+					<HeaderedContentControl
+						Classes="inputTextBoxes"
+						Header="Meet Name:"
+						TabIndex="1">
+						<TextBox Classes="input"/>
+					</HeaderedContentControl>
+					<HeaderedContentControl
+						Classes="inputTextBoxes"
+						Header="Location:"
+						TabIndex="2">
+						<TextBox Classes="input"/>
+					</HeaderedContentControl>
+					<HeaderedContentControl
+						Classes="inputTextBoxes"
+						Header="Venue:">
+						<TextBox Classes="input"/>
+					</HeaderedContentControl>
+					<HeaderedContentControl
+						Classes="inputTextBoxes"
+						Header="Sanction #:">
+						<TextBox Classes="input"/>
+					</HeaderedContentControl>
+					<HeaderedContentControl
+						Classes="inputTextBoxes"
+						Header="Start Date:">
+						<CalendarDatePicker />
+					</HeaderedContentControl>
+					<HeaderedContentControl
+						Classes="inputTextBoxes"
+						Header="End Date:">
+						<CalendarDatePicker />
+					</HeaderedContentControl>
+					<HeaderedContentControl
+						Classes="inputTextBoxes"
+						Header="# of Platforms:">
+						<ComboBox />
+					</HeaderedContentControl>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal">
+					
+				</StackPanel>
+			</Grid>
+		</Border>
+	</Viewbox>
+</UserControl>
